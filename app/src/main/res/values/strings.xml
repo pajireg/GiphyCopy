@@ -1,4 +1,9 @@
 <resources>
+    <string name="myname">최수민</string>
     <string name="app_name">GiphyCopy</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gif">GIF</string>
+    <string name="home">HOME</string>
+    <string name="search">SEARCH</string>
+    <string name="favorite">FAVORITE</string>
 </resources>

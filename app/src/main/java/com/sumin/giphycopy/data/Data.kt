@@ -1,12 +1,16 @@
-package com.sumin.giphycopy.api
+package com.sumin.giphycopy.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class DataProperty(
     val data: List<Data>,
     val pagination: Pagination,
     val meta: Meta
-)
+) : Parcelable
+@Parcelize
 data class Data(
     @SerializedName("type:") val type: String,
     @SerializedName("id") val id: String,
@@ -25,15 +29,18 @@ data class Data(
     @SerializedName("is_sticker") val isSticker: Int,
     @SerializedName("import_datetime") val importDatetime: String,
     @SerializedName("trending_datetime") val trendingDatetime: String,
-    @SerializedName("images") val images: Images?
-)
+    @SerializedName("images") val images: Images,
+    @SerializedName("user") val user: User
+) : Parcelable
+@Parcelize
 data class Pagination(
     @SerializedName("total_count") val totalCount: Int,
     @SerializedName("count") val count: Int,
     @SerializedName("offset") val offset: Int
-)
+) : Parcelable
+@Parcelize
 data class Meta(
     @SerializedName("status") val status: Int,
     @SerializedName("msg") val msg: String,
     @SerializedName("response_id") val responseId: String
-)
+) : Parcelable

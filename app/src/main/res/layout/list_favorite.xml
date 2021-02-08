@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="data"
-            type="com.sumin.giphycopy.data.Data" />
+            name="favorite"
+            type="com.sumin.giphycopy.data.entity.FavoriteEntity" />
     </data>
     <FrameLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:previewGif="@{data.images.previewGif.url}" />
+            app:favoritePreview="@{favorite.previewUrl}"/>
 
     </FrameLayout>
 </layout>

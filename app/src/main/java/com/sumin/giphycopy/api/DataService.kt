@@ -1,5 +1,6 @@
 package com.sumin.giphycopy.api
 
+import com.sumin.giphycopy.data.DataProperty
 import com.sumin.giphycopy.util.Constants.API_KEY
 import com.sumin.giphycopy.util.Constants.BASE_URL
 import retrofit2.Retrofit

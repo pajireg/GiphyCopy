@@ -9,5 +9,23 @@
         android:id="@+id/trendingFragment"
         android:name="com.sumin.giphycopy.TrendingFragment"
         tools:layout="@layout/fragment_trending"
-        android:label="TrendingFragment" />
+        android:label="TrendingFragment" >
+        <action
+            android:id="@+id/action_trendingFragment_to_imageDetailFragment"
+            app:destination="@id/imageDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageDetailFragment"
+        android:name="com.sumin.giphycopy.ImageDetailFragment"
+        tools:layout="@layout/fragment_image_detail"
+        android:label="ImageDetailFragment" >
+        <argument
+            android:name="data"
+            app:argType="com.sumin.giphycopy.data.Data" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.sumin.giphycopy.UserFragment"
+        android:label="UserFragment"
+        tools:layout="@layout/fragment_user"/>
 </navigation>

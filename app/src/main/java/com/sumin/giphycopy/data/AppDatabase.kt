@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.sumin.giphycopy.data.dao.DataDao
 import com.sumin.giphycopy.data.dao.FavoriteDao
+import com.sumin.giphycopy.data.entity.DataEntity
 import com.sumin.giphycopy.data.entity.FavoriteEntity
 
 @Database(
     entities = [
-        FavoriteEntity::class
+        FavoriteEntity::class,
+        DataEntity::class
     ]
     , version = 1
     , exportSchema = false
@@ -18,6 +21,7 @@ import com.sumin.giphycopy.data.entity.FavoriteEntity
 abstract class AppDatabase : RoomDatabase() {
 
     abstract val favoriteDao: FavoriteDao
+    abstract val dataDao: DataDao
 
     companion object {
         private lateinit var INSTANCE: AppDatabase

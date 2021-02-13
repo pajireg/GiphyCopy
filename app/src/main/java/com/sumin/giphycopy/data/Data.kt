@@ -1,7 +1,10 @@
 package com.sumin.giphycopy.data
 
 import android.os.Parcelable
+import androidx.fragment.app.viewModels
 import com.google.gson.annotations.SerializedName
+import com.sumin.giphycopy.data.entity.DataEntity
+import com.sumin.giphycopy.viewmodels.TrendingViewModel
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -32,6 +35,26 @@ data class Data(
     @SerializedName("images") val images: Images,
     @SerializedName("user") val user: User
 ) : Parcelable
+
+data class DataContainer(val data: List<Data>)
+
+fun DataContainer.asDatabaseModel(): List<DataEntity> {
+    return data.map {
+        DataEntity(
+                id = it.id,
+                type = it.type,
+                url = it.url,
+                username = it.username,
+                title = it.title,
+                rating = it.rating,
+                importDatetime = it.importDatetime,
+                trendingDatetime = it.trendingDatetime,
+                imageOriginalUrl = it.images.original.url,
+                imageDownsizedUrl = it.images.downsized.url,
+                isFavorite = false
+        )
+    }
+}
 @Parcelize
 data class Pagination(
     @SerializedName("total_count") val totalCount: Int,

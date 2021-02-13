@@ -1,8 +1,10 @@
 package com.sumin.giphycopy.api
 
+import com.sumin.giphycopy.data.DataContainer
 import com.sumin.giphycopy.data.DataProperty
 import com.sumin.giphycopy.util.Constants.API_KEY
 import com.sumin.giphycopy.util.Constants.BASE_URL
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -18,7 +20,7 @@ interface DataService {
     suspend fun getData(
         @Query("limit") limit: Int,
         @Query("rating") rating: String
-    ): DataProperty
+    ): DataContainer
 }
 
 object DataApi {

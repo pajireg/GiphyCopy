@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Images(
     @SerializedName("original") val original: Original,
-    @SerializedName("preview_gif") val previewGif: PreviewGif
+    @SerializedName("downsized") val downsized: Downsized
 ) : Parcelable
 @Parcelize
 data class Original(
@@ -22,7 +22,7 @@ data class Original(
     @SerializedName("hash") val hash: String
 ) : Parcelable
 @Parcelize
-data class PreviewGif(
+data class Downsized(
     @SerializedName("height") val height: String,
     @SerializedName("width") val width: String,
     @SerializedName("size") val size: String,

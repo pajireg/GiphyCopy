@@ -1,15 +1,19 @@
 package com.sumin.giphycopy.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.sumin.giphycopy.R
 import com.sumin.giphycopy.data.entity.FavoriteEntity
 import com.sumin.giphycopy.databinding.ListFavoriteBinding
 
 class UserAdapter(
-    private val onClickListener: OnClickListener
+    private val onClickListener: OnClickListener,
+    private val deleteFavoriteListener: DeleteFavoriteListener
 ) : ListAdapter<FavoriteEntity, UserAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(private val binding: ListFavoriteBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -35,10 +39,17 @@ class UserAdapter(
         holder.itemView.setOnClickListener {
             onClickListener.onClick(favoriteEntity)
         }
+        holder.itemView.findViewById<View>(R.id.favorited).setOnClickListener {
+            deleteFavoriteListener.onClick(favoriteEntity)
+        }
         holder.bind(favoriteEntity)
     }
     // gif 프리뷰 클릭 리스너
     class OnClickListener(val clickListener: (favoriteEntity: FavoriteEntity) -> Unit) {
+        fun onClick(favoriteEntity: FavoriteEntity) = clickListener(favoriteEntity)
+    }
+    // favorite 목록에서 지우기
+    class DeleteFavoriteListener(val clickListener: (favoriteEntity: FavoriteEntity) -> Unit) {
         fun onClick(favoriteEntity: FavoriteEntity) = clickListener(favoriteEntity)
     }
 }

@@ -2,27 +2,29 @@ package com.sumin.giphycopy.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.sumin.giphycopy.data.Data
+import com.sumin.giphycopy.R
+import com.sumin.giphycopy.data.DataModel
 import com.sumin.giphycopy.databinding.ListTrendingBinding
 
 class TrendingAdapter(
-    private val onClickListener: OnClickListener
-    ) : ListAdapter<Data, TrendingAdapter.ViewHolder>(DiffCallback) {
+        private val onFavoriteClickListener: FavoriteClickListener
+    ) : ListAdapter<DataModel, TrendingAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(private val binding: ListTrendingBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Data) {
+        fun bind(data: DataModel) {
             binding.data = data
             binding.executePendingBindings()
         }
     }
-    companion object DiffCallback : DiffUtil.ItemCallback<Data>() {
-        override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean {
+    companion object DiffCallback : DiffUtil.ItemCallback<DataModel>() {
+        override fun areItemsTheSame(oldItem: DataModel, newItem: DataModel): Boolean {
             return oldItem == newItem
         }
-        override fun areContentsTheSame(oldItem: Data, newItem: Data): Boolean {
+        override fun areContentsTheSame(oldItem: DataModel, newItem: DataModel): Boolean {
             return oldItem.id == newItem.id
         }
     }
@@ -31,14 +33,22 @@ class TrendingAdapter(
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = getItem(position)
-        // gif 프리뷰 클릭
-        holder.itemView.setOnClickListener {
-            onClickListener.onClick(data)
+
+        val favoriteBtn = holder.itemView.findViewById<ImageView>(R.id.favoriteBtn)
+        favoriteBtn.setOnClickListener {
+            onFavoriteClickListener.onClick(data)
+            when (data.isFavorite) {
+                // isFavorite 이 true 면(favoriteEntity 에 데이터가 있으면) 버튼 토글
+                true -> favoriteBtn.setImageResource(R.drawable.ic_outline_thumb_up_48)
+                // isFavorite 이 true 가 아니면 버튼 토글
+                else -> favoriteBtn.setImageResource(R.drawable.ic_baseline_thumb_up_48)
+            }
         }
         holder.bind(data)
     }
-    // gif 프리뷰 클릭 리스너
-    class OnClickListener(val clickListener: (data: Data) -> Unit) {
-        fun onClick(data: Data) = clickListener(data)
+
+    // favorite 버튼 클릭
+    class FavoriteClickListener(val clickListener: (data: DataModel) -> Unit) {
+        fun onClick(data: DataModel) = clickListener(data)
     }
 }

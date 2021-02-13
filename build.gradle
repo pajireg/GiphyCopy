@@ -3,6 +3,7 @@ buildscript {
     ext {
         kotlin_version = "1.4.30"
         retrofit_version = "2.9.0"
+        okhttpLogging_version = "4.7.2"
         gson_version = "2.8.6"
         coroutine_version = "1.4.2"
         room_version = "2.2.6"
@@ -11,6 +12,7 @@ buildscript {
         navigation_version = "2.3.3"
         constraintlayout_version = "2.0.1"
         glide_version = "4.10.0"
+        paging_version = "3.0.0-alpha13"
     }
     repositories {
         google()

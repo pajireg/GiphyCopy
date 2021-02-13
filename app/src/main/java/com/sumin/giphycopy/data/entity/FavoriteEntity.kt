@@ -12,5 +12,5 @@ data class FavoriteEntity(
     val title: String?,
     val rating: String?,
     val originalUrl: String?,
-    val previewUrl: String?
+    val downsizedUrl: String?
 )

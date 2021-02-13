@@ -5,6 +5,10 @@
         android:icon="@drawable/ic_outline_home_48"
         android:title="@string/home" />
     <item
+        android:id="@+id/dataPagingFragment"
+        android:icon="@drawable/ic_outline_search_48"
+        android:title="@string/search" />
+    <item
         android:id="@+id/userFragment"
         android:icon="@drawable/ic_outline_person_48"
         android:title="@string/favorite" />

@@ -12,7 +12,6 @@ buildscript {
         navigation_version = "2.3.3"
         constraintlayout_version = "2.0.1"
         glide_version = "4.10.0"
-        paging_version = "3.0.0-alpha13"
     }
     repositories {
         google()
@@ -22,8 +21,6 @@ buildscript {
         classpath "com.android.tools.build:gradle:4.1.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
